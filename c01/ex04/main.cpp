@@ -5,43 +5,48 @@ int main(int argc, char const *argv[])
 {
     if (argc != 4)
     {
-        std::cout<<"Program takes three parameters !"<<std::endl;
-        return (1);
+        std::cout << "Program takes three parameters !" << std::endl;
+        return 1;
     }
 
     std::string filename = argv[1];
-    std::string str1 = argv[2];
-    std::string str2 = argv[3];
+    std::string s1 = argv[2];
+    std::string s2 = argv[3];
 
-    std::fstream file;
-
-    file.open(filename, std::ios::in | std::ios::out);
-
-    if (!file)
+    if (s1.empty())
     {
-        std::cout<<"File not opened/created !"<<std::endl;
-        return (1);
+        std::cout << "s1 cannot be empty." << std::endl;
+        return 1;
     }
 
-    else
+    std::ifstream in(filename);
+    if (!in.is_open())
     {
-        std::string line;
-        std::cout<<"File opened/created successfully!"<<std::endl;
-        file<<"wahia 3ibad lah ";
-        file.seekg(0);
-        while (std::getline(file, line))
-        {
-            std::cout << line << std::endl;
-        }
-        file.clear();
-        file<<"AAAAAAAAAAAAAAAAAA";
-        file.seekg(0);
-        while (std::getline(file, line))
-        {
-            std::cout << line << std::endl;
-        }
-        file.close();
+        std::cout << "File not opened !" << std::endl;
+        return 1;
     }
-    std::cout<<std::endl;
+
+    std::ofstream out(filename + ".replace");
+    if (!out.is_open())
+    {
+        std::cout << "Failed to create .replace file !" << std::endl;
+        return 1;
+    }
+
+    std::string line;
+    while (std::getline(in, line))
+    {
+        size_t pos = 0;
+        while ((pos = line.find(s1, pos)) != std::string::npos)
+        {
+            line.erase(pos, s1.length());
+            line.insert(pos, s2);
+            pos += s2.length();
+        }
+        out << line;
+        if (!in.eof()) out << "\n";
+    }
+
     return 0;
 }
+
