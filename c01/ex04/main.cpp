@@ -8,35 +8,30 @@ int main(int argc, char const *argv[])
         std::cout << "Program takes three parameters !" << std::endl;
         return 1;
     }
-
     std::string filename = argv[1];
     std::string s1 = argv[2];
     std::string s2 = argv[3];
-
-    if (s1.empty())
+    if (s1.empty() || s2.empty())
     {
-        std::cout << "s1 cannot be empty." << std::endl;
+        std::cout << "Strings cannot be empty." << std::endl;
         return 1;
     }
-
-    std::ifstream in(filename);
+    std::ifstream in(filename.c_str());
     if (!in.is_open())
     {
         std::cout << "File not opened !" << std::endl;
         return 1;
     }
-
-    std::ofstream out(filename + ".replace");
+    std::ofstream out((filename + ".replace").c_str());
     if (!out.is_open())
     {
         std::cout << "Failed to create .replace file !" << std::endl;
         return 1;
     }
-
     std::string line;
     while (std::getline(in, line))
     {
-        int pos = 0;
+        std::string::size_type pos = 0;
         while ((pos = line.find(s1, pos)) != std::string::npos)
         {
             line.erase(pos, s1.length());

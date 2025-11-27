@@ -1,16 +1,15 @@
 C = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Harl.cpp
-HEADER = Harl.hpp
+SRC = main.cpp
 OBJ = $(SRC:.cpp=.o)
-NAME = Harl
+NAME = Sed
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(C) $(CFLAGS) $(OBJ) -o $(NAME)
 
-%.o: %.cpp $(HEADER)
+%.o: %.cpp
 	$(C) $(CFLAGS) -c $< -o $@
 
 clean:
