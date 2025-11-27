@@ -36,7 +36,7 @@ int main(int argc, char const *argv[])
     std::string line;
     while (std::getline(in, line))
     {
-        size_t pos = 0;
+        int pos = 0;
         while ((pos = line.find(s1, pos)) != std::string::npos)
         {
             line.erase(pos, s1.length());
@@ -44,9 +44,6 @@ int main(int argc, char const *argv[])
             pos += s2.length();
         }
         out << line;
-        if (!in.eof()) out << "\n";
     }
-
     return 0;
 }
-

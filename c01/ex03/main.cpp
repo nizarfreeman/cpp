@@ -1,4 +1,5 @@
 #include <iostream>
+
 class Weapon
 {
     private:
@@ -11,8 +12,8 @@ class Weapon
         {
             this->type = type;
         };
-        ~Weapon(){
-
+        ~Weapon()
+        {
         };
         std::string &getType()
         {
@@ -49,7 +50,7 @@ class HumanB
         Weapon *weapon;
         std::string name;
     public:
-        HumanB(std::string name): name(name), weapon(NULL)
+        HumanB(std::string name): weapon(NULL), name(name)
         {
         };
         ~HumanB()
@@ -58,7 +59,7 @@ class HumanB
 
         void setWeapon(Weapon &wep)
         {
-            this->weapon= &wep;
+            this->weapon = &wep;
         };
         void attack()
         {
@@ -69,22 +70,22 @@ class HumanB
         };
 };
 
-int main()
+int main(int ac, char **av)
 {
-{
-Weapon club = Weapon("crude spiked club");
-HumanA bob("Bob", club);
-bob.attack();
-club.setType("some other type of club");
-bob.attack();
-}
-{
-Weapon club = Weapon("crude spiked club");
-HumanB jim("Jim");
-jim.setWeapon(club);
-jim.attack();
-club.setType("some other type of club");
-jim.attack();
-}
-return 0;
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+    return 0;
 }
