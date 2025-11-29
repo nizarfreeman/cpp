@@ -16,7 +16,7 @@ int main(int argc, char const *argv[])
         std::cout << "Strings cannot be empty." << std::endl;
         return 1;
     }
-    std::ifstream in(filename.c_str());
+    std::fstream in(filename.c_str(), std::ios::in | std::ios::out);
     if (!in.is_open())
     {
         std::cout << "File not opened !" << std::endl;
@@ -37,8 +37,10 @@ int main(int argc, char const *argv[])
             line.erase(pos, s1.length());
             line.insert(pos, s2);
             pos += s2.length();
-        }
+          }
         out << line;
+        if (!in.eof())
+            out << '\n';
     }
     return 0;
 }

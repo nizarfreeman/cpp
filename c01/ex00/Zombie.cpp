@@ -1,59 +1,21 @@
-#include <iostream>
+#include "Zombie.hpp"
 
-class Zombie
+Zombie::Zombie(std::string name)
 {
-    private:
-        std::string name;
-    public:
-        Zombie(std::string name)
-        {
-            this->name = name;
-        };
-        ~Zombie()
-        {
-            std::cout<<this->name<<": destoryed"<<std::endl;
-        };
-
-        std::string get_()
-        {
-            return (this->name);
-        };
-        void announce(void)
-        {
-            std::cout<<this->name<<": BraiiiiiiinnnzzzZ..."<<std::endl;
-        };
+    this->name = name;
 };
 
-Zombie *newZombie(std::string name)
+Zombie::~Zombie()
 {
-    Zombie *z = new Zombie(name);
-    return z;
-}
+    std::cout<<this->name<<": destoryed"<<std::endl;
+};
 
-void randomChump(std::string name)
+std::string Zombie::get_()
 {
-    Zombie z(name);
-    z.announce();
-}
+    return (this->name);
+};
 
-int main(int argc, char const *argv[])
+void Zombie::announce(void)
 {
-    Zombie *z1 = newZombie("nizar");
-    z1->announce();
-    delete(z1);
-    Zombie *z2 = newZombie("nizarr");
-    z2->announce();
-    delete(z2);  
-    Zombie *z3 = newZombie("nizarrr");
-    z3->announce();
-    delete(z3);
-
-
-    std::cout<<std::endl;
-
-
-    randomChump("mizar");
-    randomChump("mizarr");
-    randomChump("mizarrr");
-    return 0;
-}
+    std::cout<<this->name<<": BraiiiiiiinnnzzzZ..."<<std::endl;
+};
