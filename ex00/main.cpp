@@ -1,15 +1,22 @@
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void )
+int main(void)
 {
-    Fixed a;
-    Fixed b( a );
-    Fixed c;
-    
-    c = b;
-    
-    std::cout << a.getRawBits()/256 << std::endl;
-    std::cout << b.getRawBits()/256 << std::endl;
-    std::cout << c.getRawBits()/256 << std::endl;
-    return 0;
+    // ClapTrap testing
+    {
+        ClapTrap a("nizar");
+        ClapTrap b("mizar");
+        ClapTrap c;
+
+        a.attack("alice");
+        b.takeDamage(5);
+        b.beRepaired(3);
+
+        b.attack("bob");
+        a.takeDamage(6);
+        a.beRepaired(4);
+        c = a = b;
+    }
+
+    return (0);
 }

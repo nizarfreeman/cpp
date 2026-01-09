@@ -1,7 +1,7 @@
 C = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRC = main.cpp Fixed.cpp
-HEADER = Fixed.hpp
+SRC = main.cpp ClapTrap.cpp
+HEADER = ClapTrap.hpp
 OBJ = $(SRC:.cpp=.o)
 NAME = a.out
 

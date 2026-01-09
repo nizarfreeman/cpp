@@ -1,19 +1,47 @@
-#include "Fixed.hpp"
+#include "ScavTrap.hpp"
 
-int main( void )
+int main()
 {
-    Fixed a;
-    Fixed const b( 10 );
-    Fixed const c( 42.42f );
-    Fixed const d( b );
-    a = Fixed( 1234.4321f );
-    std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << std::endl;
-    std::cout << "c is " << c << std::endl;
-    std::cout << "d is " << d << std::endl;
-    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-    return 0;
+    // ClapTrap testing
+    {
+        ClapTrap a("nizar");
+        ClapTrap b("mizar");
+
+        a.attack("mizar");
+
+        b.takeDamage(9);
+        b.beRepaired(5);
+
+        ClapTrap c(a);
+        ClapTrap d;
+        d = b;
+        c.attack("mizar");
+
+        d.takeDamage(10);
+        d.beRepaired(5);
+        d.attack("nizar");
+        
+        c = a = b;
+    }
+
+    std::cout<<std::endl<<std::endl;
+
+    // ScavTrap testing
+    {
+        ScavTrap a("bob");
+        ScavTrap b("alice");
+        ScavTrap c;
+
+        a.attack("alice");
+        b.takeDamage(5);
+        b.beRepaired(3);
+        b.guardGate();
+
+        b.attack("bob");
+        a.takeDamage(6);
+        a.beRepaired(4);
+        a.guardGate();
+        c = a = b;
+    }
+    return (0);
 }
