@@ -1,7 +1,7 @@
 C = c++
-CFLAGS = #-Wall -Wextra -Werror -std=c++98
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
-HEADER = ClapTrap.hpp ScavTrap.hpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+SRC = Animal.cpp Dog.cpp Cat.cpp main.cpp WrongAnimal.cpp WrongCat.cpp
+HEADER = Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp
 OBJ = $(SRC:.cpp=.o)
 NAME = a.out
 

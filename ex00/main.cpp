@@ -1,22 +1,22 @@
-#include "ClapTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
-int main(void)
+int main()
 {
-    // ClapTrap testing
-    {
-        ClapTrap a("nizar");
-        ClapTrap b("mizar");
-        ClapTrap c;
+    const WrongAnimal* meta = new WrongAnimal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 
-        a.attack("alice");
-        b.takeDamage(5);
-        b.beRepaired(3);
+    std::cout << meta->getType() << " " << std::endl;
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;   
 
-        b.attack("bob");
-        a.takeDamage(6);
-        a.beRepaired(4);
-        c = a = b;
-    }
+    i->makeSound();
+    j->makeSound();
+    meta->makeSound();
 
     return (0);
 }
